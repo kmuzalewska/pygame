@@ -7,17 +7,19 @@ class Panda(object):
         self.game = game
         self.speed = 1.3
         self.gravity = 0.5
-        self.filename = 'panda.jpeg'
+        self.filename = 'panda.png'
 
         self.pos = np.array([0.0,0.0])
         self.vel = np.array([0.0,0.0])
         self.acc = np.array([0.0,0.0])
 
         try:
-            self.sheet = pygame.image.load(self.filename).convert()
+            self.sheet = pygame.image.load(self.filename).convert_alpha()
         except pygame.error, message:
             print 'Unable to load spritesheet image:', self.filename
             raise SystemExit, message
+
+        self.size = self.sheet.get_rect().size
 
     def add_force(self, force):
         self.acc += force
