@@ -15,13 +15,15 @@ except ImportError:
 
 
 import random
-
+import os
 
 class Szustak(object):
     def __init__(self, game):
+        self.current_path = os.path.dirname(__file__)
+        self.resource_path = os.path.join(self.current_path, 'pictures')
         self.game = game
-        self.filename = 'pictures/szustak.png'
-
+        self.filename = self.resource_path + '/szustak.png'
+        # print self.filename
         self.pos = np.array([random.uniform(0, 1160), random.uniform(0, 480)])
         try:
             self.sheet = pygame.image.load(self.filename).convert_alpha()

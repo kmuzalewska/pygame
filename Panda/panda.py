@@ -13,13 +13,18 @@ except ImportError:
     print "Problem with import numpy module."
     print "sudo apt-get install python-numpy"
 
+import os
+
+
 class Panda(object):
 
     def __init__(self, game):
+        self.current_path = os.path.dirname(__file__)
+        self.resource_path = os.path.join(self.current_path, 'pictures')
         self.game = game
         self.speed = 1.3
         self.gravity = 0.5
-        self.filename = 'pictures/panda.png'
+        self.filename = self.resource_path + '/panda.png'
 
         self.pos = np.array([0.0,0.0])
         self.vel = np.array([0.0,0.0])

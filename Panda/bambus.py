@@ -12,13 +12,17 @@ try:
 except ImportError:
     print "Problem with import numpy module."
     print "sudo apt-get install python-numpy"
+
 import random
+import os
 
 class Bambus(object):
 
     def __init__(self, game):
+        self.current_path = os.path.dirname(__file__)
+        self.resource_path = os.path.join(self.current_path, 'pictures')
         self.game = game
-        self.filename = 'pictures/bambus.png'
+        self.filename = self.resource_path + '/bambus.png'
 
         self.pos = np.array([random.uniform(0,1000), random.uniform(0, 450)])
         try:
